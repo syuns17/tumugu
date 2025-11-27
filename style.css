@@ -207,7 +207,7 @@ html,body{
     );
 
   mix-blend-mode: multiply;
-  opacity:0.7;
+  opacity:0.8;
 }
 
 /* 白布の中央の “折り目の線” */
@@ -257,18 +257,19 @@ html,body{
 .page-wrap{
   position:relative;
   z-index:2; /* 背景より前に出す */
-  /* ---------------------------------------
+  
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:48px;
-  --------------------------------------- */
+  
+  /* ---------------------------------------
   width:100%;
   max-width:1200px;
   margin:0 auto;
   padding:48px 20px;
-
+  --------------------------------------- */
   gap:20px;
   color:#222;
   text-align:center;
