@@ -98,7 +98,7 @@ html,body{
   background-position: center;
 
   position:relative;
-  overflow:hidden; /* はみ出すパーツを隠す */
+  /*overflow:hidden;  はみ出すパーツを隠す */
 }
 
 /* ---------------------------------------
@@ -257,11 +257,18 @@ html,body{
 .page-wrap{
   position:relative;
   z-index:2; /* 背景より前に出す */
+  /* ---------------------------------------
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:48px;
+  --------------------------------------- */
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:48px 20px;
+
   gap:20px;
   color:#222;
   text-align:center;
