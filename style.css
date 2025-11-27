@@ -1,24 +1,166 @@
-body {
-  max-width: 800px;
-  margin: 0 auto;
+/* style.css
+   使い方:
+   1) このファイルを保存 (style.css)
+   2) HTML で <link rel="stylesheet" href="style.css"> を読み込む
+   3) body 全体を背景にするならそのまま。要素だけに使うなら .cozy-bg をページ最背面に置く
+*/
+
+:root{
+  /* カラーパレット（必要なら調整して） */
+  --taupe: #8b7f76;      /* 濃いニット色 */
+  --cream: #f5efe5;      /* クリーム色ニット */
+  --light-gray: #bdb7b3; /* 淡いグレー */
+  --offwhite: #fbfbfb;   /* パンツの白 */
+  --shadow: rgba(0,0,0,0.08);
+  --stitch: rgba(0,0,0,0.03);
 }
 
-.sender-column {
-  text-align: right;
+/* --- 全体レイアウト --- */
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--cream);
 }
 
-h1 {
-  font-size: 1.5em;
+/* 背景本体（body に直接当てるかこのクラスを使う） */
+.cozy-bg, body {
+  min-height:100vh;
+  /* ベースに横三段のふんわりした色分け */
+  background-image:
+    /* 1) 下の白パンツの布目・折り目（最前面） */
+    linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(250,250,250,0.6) 40%, rgba(245,245,245,0.4) 100%),
+    /* 細い中央の折り目（パンツの切り返しっぽく） */
+    linear-gradient(90deg, rgba(255,255,255,0.0) 0 calc(50% - 140px), rgba(255,255,255,0.9) calc(50% - 140px) calc(50% - 138px), rgba(255,255,255,0.0) calc(50% - 138px) 100%),
+    /* 2) 薄グレーのニット（右寄せ） */
+    radial-gradient(1200px 600px at 75% 25%, rgba(189,183,179,0.95) 0%, rgba(189,183,179,0.85) 35%, rgba(189,183,179,0.7) 60%, rgba(189,183,179,0.6) 100%),
+    /* 3) クリームのニット（中央） */
+    radial-gradient(1100px 500px at 50% 20%, rgba(245,239,229,0.98) 0%, rgba(245,239,229,0.9) 35%, rgba(245,239,229,0.8) 60%, rgba(245,239,229,0.7) 100%),
+    /* 4) 濃いグレーのニット（上） */
+    radial-gradient(1300px 700px at 20% 10%, rgba(139,127,118,0.97) 0%, rgba(139,127,118,0.9) 34%, rgba(139,127,118,0.75) 60%, rgba(139,127,118,0.65) 100%),
+    /* 5) 全体の柔らかい影（ビネット） */
+    radial-gradient(ellipse at center, rgba(0,0,0,0.06), rgba(0,0,0,0.02) 40%, transparent 70%);
+  background-blend-mode: normal, screen, normal, multiply, multiply;
+  background-size: cover, cover, cover, cover, cover;
+  background-position: center;
+  position:relative;
+  overflow:hidden;
 }
 
-h2 {
-  font-size: 1.3em;
+/* --- ニットのリブ（畝）感を重ねる --- */
+.cozy-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  /* リブ：横畝を3層で重ねて複雑な布感に */
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 3px, rgba(0,0,0,0.01) 3px 6px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 6px, rgba(0,0,0,0.008) 6px 12px);
+  mix-blend-mode: overlay;
+  opacity:0.85;
+  transform: scaleY(1.02); /* 少し縦を伸ばして自然に */
+  filter: blur(0.2px) contrast(1.02);
 }
 
-p,ul,ol,dl,address {
-  font-size: 1.1em;
+/* --- 毛羽（ふわっとした粒）を小さな SVG ノイズで重ねる --- */
+/* SVGは小さなノイズをタイル表示、軽い布の粒感を作る */
+.cozy-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'>\
+      <defs>\
+        <filter id='g' x='0' y='0' width='100%' height='100%'>\
+          <feTurbulence baseFrequency='0.8' numOctaves='1' seed='2' stitchTiles='stitch'/>\
+          <feColorMatrix type='saturate' values='0'/>\
+          <feComponentTransfer>\
+            <feFuncA type='table' tableValues='0 0.7'/>\
+          </feComponentTransfer>\
+        </filter>\
+      </defs>\
+      <rect width='100%' height='100%' fill='white' filter='url(#g)' opacity='0.06'/>\
+    </svg>");
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  mix-blend-mode: overlay;
+  opacity:0.9;
+  transform: translateZ(0);
 }
 
-p, li, dd, dt, address {
-  line-height: 1.5;
+/* --- 下のパンツっぽい白布の「縦の織り目感」 --- */
+.pants-fold{
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  width: min(90%, 1100px);
+  height: 28%;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,0.95));
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06) inset, 0 -6px 14px rgba(0,0,0,0.03);
+  border-radius: 6px;
+  overflow:hidden;
+  opacity:0.95;
+}
+
+/* 織り目（縦）を細かく */
+.pants-fold::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.02) 0 1px, rgba(255,255,255,0.0) 1px 4px);
+  mix-blend-mode: multiply;
+  opacity:0.7;
+}
+
+/* 薄い折り目（中心） */
+.pants-fold::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:3px;
+  transform:translateX(-50%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.6), rgba(0,0,0,0.02));
+  opacity:0.6;
+  filter: blur(0.4px);
+}
+
+/* --- レスポンシブでテクスチャ量を調整 --- */
+@media (max-width:800px){
+  .cozy-bg::after{ background-size: 200px 200px; opacity:0.7; }
+  .cozy-bg::before{ opacity:0.75; }
+  .pants-fold{ height:30%; bottom:4%; }
+}
+
+/* --- デモ用：中央にコンテンツ置くためのスタイル（任意） --- */
+.page-wrap{
+  position:relative;
+  z-index:2; /* 背景より前面 */
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px;
+  gap:20px;
+  color:#222;
+  text-align:center;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.card{
+  background: rgba(255,255,255,0.7);
+  padding:28px;
+  border-radius:12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px) saturate(1.05);
+  max-width:720px;
 }
