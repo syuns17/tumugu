@@ -96,8 +96,8 @@
         </div>
 
         <!-- 右側：画像（差し替えOK） -->
-        <div style="flex:0 0 320px;">
-          <img src="images/aikonn.jpg" alt="tumuguのイメージアイコン（差し替え）">
+        <div class="hero-icon-wrap" style="flex:0 0 320px;">
+          <img  class="icon-img" src="images/aikonn.jpg" alt="tumuguのイメージアイコン（差し替え）">
         </div>
       </section>
 
@@ -111,9 +111,22 @@
 
           <!-- 商品1 ------------------------- -->
           <article class="card" aria-labelledby="p1">
-            <img src="images/karigazou.JPG" alt="商品1（差し替え）">
-            <h3 id="p1" style="margin:12px 0 6px 0;">商品名1（差し替え）</h3>
-            <div class="meta">サイズ: S/M/L — カラー: ....／.... — ¥00,000</div>
+            <!-- ▼ 追加（ここがスライダー部分） -->
+            <div class="slider" data-slider="p1">
+              <img src="images/pull1.JPG" alt="プルオーバー3種">
+              <img src="images/pull2.JPG" alt="プルオーバー3種">
+              <img src="images/pull3.JPG" alt="プルオーバー3種">
+              <img src="images/pull4.JPG" alt="プルオーバー ホワイト">
+              <img src="images/pull5.JPG" alt="プルオーバー グレー">
+              <img src="images/pull6.JPG" alt="プルオーバー ブラウン">
+            </div>
+
+            <!-- 操作用ボタン -->
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+            <!-- ▲ ここまで追加 -->
+            <h3 id="p1" style="margin:12px 0 6px 0;">プルオーバー</h3>
+            <div class="meta">ワンサイズ <br> カラー: ホワイト/グレー/ブラウン <br>¥00,000</div>
             <p style="margin-top:8px; font-size:0.95rem;">
               商品説明etc.
             </p>
@@ -123,7 +136,7 @@
           <article class="card" aria-labelledby="p2">
             <img src="images/karigazou.JPG" alt="商品2（差し替え）">
             <h3 id="p2" style="margin:12px 0 6px 0;">商品名2（差し替え）</h3>
-            <div class="meta">ワンサイズ — カラー: ... — ¥0,000</div>
+            <div class="meta">サイズ: S/M/L — カラー: ... — ¥0,000</div>
             <p style="margin-top:8px; font-size:0.95rem;">商品説明etc.</p>
           </article>
 
@@ -180,7 +193,8 @@
 
         <div style="display:flex; gap:14px; margin-top:12px; flex-wrap:wrap;">
           <a class="card" href="https://www.instagram.com/tumugu_myfavorites" target="_blank">
-            <img src="images/aikonn.jpg" alt="Instagram サムネイル" style="width:64px; height:64px;">
+            <img class="insta-thumb" src="images/aikonn.jpg" alt="Instagram サムネイル" style="width:128px; height:128px;">
+            <img class="insta-thumb" src="images/QR.jpg" alt="Instagram QRコード" style="width:128px; height:128px;">
             <div>
               <div style="font-weight:700;">@tumugu_myfavorites</div>
               <div class="meta">仕事用アカウント</div>
@@ -205,5 +219,40 @@
       </footer>
     </div>
   </header>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const sliders = document.querySelectorAll(".slider");
+
+    sliders.forEach(slider => {
+      const images = slider.querySelectorAll("img");
+      let index = 0;
+
+      // 最初の画像を表示
+      images[index].classList.add("active");
+
+      // スライダーID
+      const id = slider.dataset.slider;
+
+      // ボタン
+      const prev = document.querySelector(`.slide-btn.prev[data-target='${id}']`);
+      const next = document.querySelector(`.slide-btn.next[data-target='${id}']`);
+
+      prev.addEventListener("click", () => {
+        images[index].classList.remove("active");
+        index = (index - 1 + images.length) % images.length;
+        images[index].classList.add("active");
+      });
+
+      next.addEventListener("click", () => {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+      });
+    });
+
+  });
+</script>
+
 </body>
 </html>
