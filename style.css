@@ -322,6 +322,22 @@ html,body{
     padding-top: 20px !important;
   }
 }
+@media (max-width:430px) {
+  /* ヘッダー右側のボタンラッパ */
+  .header-btns {
+    display: flex;
+    gap: 6px;         /* ボタン間の隙間 */
+    flex-wrap: nowrap; /* 折り返さない */
+    overflow-x: auto;  /* 幅不足なら横スクロール */
+  }
+
+  .header-btns .btn {
+    flex: 1 1 auto;    /* 横幅を縮小可能に */
+    font-size: 0.8rem; /* フォントも少し小さく */
+    padding: 6px 10px; /* ボタンサイズを調整 */
+    white-space: nowrap; /* テキストを改行させない */
+  }
+}
 
 
 /* ---------------------------------------
