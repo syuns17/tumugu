@@ -418,3 +418,65 @@ html,body{
 .slide-btn.next {
   right: 8px;
 }
+
+.insta-flex {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* プロフィール */
+.insta-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  max-width: 340px;
+  margin-top: 35px;
+}
+
+/* Instagram埋め込み */
+.insta-embed {
+  max-width: 300px;
+  margin-right: 24px;
+  flex: 1 1 300px;
+}
+
+.insta-embed iframe {
+  max-width: 100% !important;
+}
+
+/* 連絡ボタン */
+.insta-contact {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* スマホ時 */
+@media (max-width: 768px) {
+  .insta-flex {
+    flex-direction: column;
+  }
+
+  .insta-embed,
+  .insta-profile {
+    max-width: 100%;
+  }
+}
+
+.event-grid {
+  display: grid;
+  gap: 20px; /* カード間の隙間 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.page-header {
+  position: sticky; /* または fixed */
+  top: 0;           /* 上端に固定 */
+  background: #fff; /* 背景をつけて下の要素を隠さない */
+  z-index: 1000;    /* 他の要素より前に表示 */
+  padding: 12px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 影で浮いて見える */
+}

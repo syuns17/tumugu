@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ワークショップ</title>
+  <style>
+    /* ---------------------------------
+       基本リセット
+    --------------------------------- */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      line-height: 1.5;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    /* ---------------------------------
+       固定ヘッダー
+    --------------------------------- */
+    .event-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      padding: 16px 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    /* ---------------------------------
+       メインコンテンツ
+    --------------------------------- */
+    .event-content {
+      padding-top: 160px; /* headerの高さ分 */
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0 12px 12px 12px;
+      font-size: 0.95rem;
+    }
+
+    /* ---------------------------------
+       レスポンシブ調整
+    --------------------------------- */
+    @media (max-width: 768px) {
+      .event-header {
+        padding: 12px 16px;
+      }
+
+      .event-content {
+        padding-top: 160px;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 固定ヘッダー -->
+  <header class="event-header">
+    <h1>ワークショップ</h1>
+    <p class="meta">これまでに開催したワークショップの記録です。</p>
+    <a class="btn" href="index.html#events">← トップに戻る</a>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="event-content">
+    <div class="event-grid">
+      
+      <!-- イベントカード1 -->
+      <article class="card">
+        <img src="images/workshop-01.png" alt="ワークショップ1">
+        <h3>ワークショップ1</h3>
+        <p>〇月〇日、〇〇会場で開催。テーマは「手作り雑貨」。</p>
+      </article>
+
+      <!-- イベントカード2 -->
+      <article class="card">
+        <img src="images/workshop-01.png" alt="ワークショップ2">
+        <h3>ワークショップ2</h3>
+        <p>〇月〇日、△△会場で開催。テーマは「布小物作り」。</p>
+      </article>
+
+      <!-- イベントカード3 -->
+      <article class="card">
+        <img src="images/workshop-01.png" alt="ワークショップ3">
+        <h3>ワークショップ3</h3>
+        <p>〇月〇日、□□会場で開催。テーマは「刺繍入門」。</p>
+      </article>
+
+      <!-- イベントカード4 -->
+      <article class="card">
+        <img src="images/workshop-01.png" alt="ワークショップ4">
+        <h3>ワークショップ4</h3>
+        <p>〇月〇日、◇◇会場で開催。テーマは「アクセサリー作り」。</p>
+      </article>
+
+    </div>
+  </main>
+
+</body>
+</html>

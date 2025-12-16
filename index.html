@@ -148,34 +148,34 @@
       <!-- -------------- イベント情報 -------------- -->
       <section id="events" style="margin-top:40px;">
         <h2>Events / イベント情報</h2>
-        <p class="meta">実際に手に取れる制作できるイベント情報。</p>
+        <p class="meta">過去に行ったワークショップ・マルシェ情報。</p>
 
         <ul style="margin-top:14px; list-style:none; padding:0; display:grid; gap:12px;">
           <!-- イベント1 -->
           <li class="card" style="display:flex; gap:12px; align-items:center;">
             <div style="flex:0 0 84px;">
-              <img src="images/event1.jpg" alt="イベント会場" style="height:64px;">
+              <img src="images/workshop-01.png" alt="ワークショップ" style="height:64px;">
             </div>
             <div>
-              <strong>イベント名 - 2025/00/00</strong>
-              <div class="meta">開催場所 — 住所等</div>
+              <strong>ワークショップ</strong>
+              <div class="meta">詳しくはこちら→</div>
             </div>
             <div style="margin-left:auto">
-              <a class="btn" href="#">詳細</a>
+              <a class="btn" href="workshop.html">詳細</a>
             </div>
           </li>
 
           <!-- イベント2 -->
           <li class="card" style="display:flex; gap:12px; align-items:center;">
             <div style="flex:0 0 84px;">
-              <img src="images/event2.jpg" alt="ワークショップ" style="height:64px;">
+              <img src="images/marusye-01.png" alt="マルシェ" style="height:64px;">
             </div>
             <div>
-              <strong>例:ワークショップ 2025/00/00</strong>
-              <div class="meta">開催場所 — 予約制</div>
+              <strong>マルシェ</strong>
+              <div class="meta">詳しくはこちら→</div>
             </div>
             <div style="margin-left:auto">
-              <a class="btn" href="#">申込</a>
+              <a class="btn" href="marche.html">詳細</a>
             </div>
           </li>
         </ul>
@@ -184,24 +184,55 @@
       <!-- -------------- Instagram / お問い合わせ -------------- -->
       <section id="contact" style="margin-top:40px; margin-bottom:48px;">
         <h2>Instagram & Contact</h2>
-        <p class="meta">Instagramで最新情報を更新中。</p>
+        
+        <div class="insta-flex">
 
-        <div style="display:flex; gap:14px; margin-top:12px; flex-wrap:wrap;">
-          <a class="card" href="https://www.instagram.com/tumugu_myfavorites" target="_blank">
-            <img class="insta-thumb" src="images/aikonn.jpg" alt="Instagram サムネイル" style="width:128px; height:128px;">
-            <img class="insta-thumb" src="images/QR.jpg" alt="Instagram QRコード" style="width:128px; height:128px;">
+          <!-- Instagram投稿① -->
+          <div class="insta-embed">
+            <div class="meta">instagramアカウントはこちらから!</div>
+            <blockquote class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/CvuHrwwPy1J/"
+              data-instgrm-version="14">
+            </blockquote>
+          </div>
+
+          <!-- Instagram投稿② -->
+          <div class="insta-embed">
+            <div class="meta">最新のイベント情報も更新中!</div>
+            <blockquote class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DRoktg2AaMO/"
+              data-instgrm-version="14">
+            </blockquote>
+          </div>
+          <!-- プロフィール -->
+          <a class="card insta-profile"
+            href="https://www.instagram.com/tumugu_myfavorites"
+            target="_blank">
+
+            <img src="images/QR.jpg" alt="Instagram QRコード" 
+                style="width:128px; height:128px;">
+
             <div>
               <div style="font-weight:700;">@tumugu_myfavorites</div>
-              <div class="meta">仕事用アカウント</div>
+              <div class="meta">instagramアカウント</div>
             </div>
           </a>
 
-          <div style="display:flex; gap:10px; align-items:center;">
-            <a class="btn" href="mailto:hello@example.com">メールで問い合わせ</a>
-            <a class="btn" href="tel:+810000000000">電話</a>
+          
+
+          <!-- メール・電話 -->
+          <div class="insta-contact">
+            <a class="btn" href="mailto:tumugu87@gmail.com">メールで問い合わせ</a>
+            <a class="btn" href="tel:+08055500423">電話</a>
           </div>
+
         </div>
+
+        <!-- Instagram公式スクリプト -->
+        <script async src="//www.instagram.com/embed.js"></script>
       </section>
+
+      
 
       <!-- -------------- フッター -------------- -->
       <footer style="margin-top:40px; padding:18px 0; color:#444; font-size:0.9rem;">
