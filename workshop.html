@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>ワークショップ</title>
   <style>
+    
     /* ---------------------------------
        基本リセット
     --------------------------------- */
@@ -12,7 +14,7 @@
       margin: 0;
       font-family: sans-serif;
       line-height: 1.5;
-      background: #f9f9f9;
+      background: #f5efe5;
       color: #333;
     }
 
@@ -35,7 +37,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: #fff;
+      background: #f5efe5;
       padding: 16px 24px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       z-index: 1000;
@@ -57,8 +59,8 @@
     }
 
     .card {
-      background: #fff;
-      border-radius: 12px;
+      background: #fffdf8;
+      border-radius: 130px;
       overflow: hidden;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
@@ -71,13 +73,15 @@
     }
 
     .card h3 {
-      margin: 12px;
+      margin: 0 12px 6px 12px;
       font-size: 1.2rem;
+      text-align: center;
     }
 
     .card p {
       margin: 0 12px 12px 12px;
       font-size: 0.95rem;
+      text-align: center;
     }
 
     /* ---------------------------------
@@ -148,106 +152,108 @@
     <p class="meta">これまでに開催したワークショップの記録です。</p>
     <a class="btn" href="index.html#events">← トップに戻る</a>
   </header>
-
-  <!-- メインコンテンツ -->
-  <main class="event-content">
-    <div class="event-grid">
-      
-      <!-- イベントカード1 -->
-      <article class="card">
-        <div class="slider" data-slider="p1">
-          <img src="images/WS-kasa01-1.jpg" alt="ワークショップ1-1">
-          <img src="images/WS-kasa01-2.jpg" alt="ワークショップ1-2">
-          <img src="images/WS-kasa01-3.jpg" alt="ワークショップ1-3">
-          <img src="images/WS-kasa01-4.png" alt="ワークショップ1-4">
-
-          <button class="slide-btn prev" data-target="p1">←</button>
-          <button class="slide-btn next" data-target="p1">→</button>
-        </div>
+  <body>
+    <div class="cozy-bg" aria-hidden="true"></div>
+    <!-- メインコンテンツ -->
+    <main class="event-content">
+      <div class="event-grid">
         
-        <h3>日傘作り</h3>
-        <p>2024年6月21日,29日</p>
-        <p>喫茶ecotoneにて開催</p>
-      </article>
+        <!-- イベントカード1 -->
+        <article class="card">
+          <div class="slider" data-slider="p1">
+            <img src="images/WS-kasa01-1.jpg" alt="ワークショップ1-1">
+            <img src="images/WS-kasa01-2.jpg" alt="ワークショップ1-2">
+            <img src="images/WS-kasa01-3.jpg" alt="ワークショップ1-3">
+            <img src="images/WS-kasa01-4.png" alt="ワークショップ1-4">
 
-      <!-- イベントカード2 -->
-      <article class="card">
-        <div class="slider" data-slider="p1">
-          <img src="images/WS-kasa02-1.png" alt="ワークショップ2-1">
-          <img src="images/WS-kasa02-2.jpg" alt="ワークショップ2-2">
-          <img src="images/WS-kasa02-3.jpg" alt="ワークショップ2-3">
-          <img src="images/WS-kasa02-4.jpg" alt="ワークショップ2-4">
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+          </div>
+          
+          <h3>日傘作り</h3>
+          <p>2024年6月21日,29日</p>
+          <p>セルフ喫茶ecotoneにて開催</p>
+        </article>
 
-          <button class="slide-btn prev" data-target="p1">←</button>
-          <button class="slide-btn next" data-target="p1">→</button>
-        </div>
-        <h3>日傘作り</h3>
-        <p>2024年7月3日,13日</p>
-        <p>喫茶ecotoneにて開催</p>
-      </article>
+        <!-- イベントカード2 -->
+        <article class="card">
+          <div class="slider" data-slider="p1">
+            <img src="images/WS-kasa02-1.png" alt="ワークショップ2-1">
+            <img src="images/WS-kasa02-2.jpg" alt="ワークショップ2-2">
+            <img src="images/WS-kasa02-3.jpg" alt="ワークショップ2-3">
+            <img src="images/WS-kasa02-4.jpg" alt="ワークショップ2-4">
 
-      <!-- イベントカード3 -->
-      <article class="card">
-        <div class="slider" data-slider="p1">
-          <img src="images/WS-kasa03-1.jpg" alt="ワークショップ3-1">
-          <img src="images/WS-kasa03-2.jpg" alt="ワークショップ3-1">
-          <img src="images/WS-kasa03-3.jpg" alt="ワークショップ3-3">
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+          </div>
+          <h3>日傘作り</h3>
+          <p>2024年7月3日,13日</p>
+          <p>セルフ喫茶ecotoneにて開催</p>
+        </article>
 
-          <button class="slide-btn prev" data-target="p1">←</button>
-          <button class="slide-btn next" data-target="p1">→</button>
-        </div>
-        <h3>日傘作り</h3>
-        <p>2025年4月18日</p>
-        <p>喫茶ecotoneにて開催</p>
-      </article>
+        <!-- イベントカード3 -->
+        <article class="card">
+          <div class="slider" data-slider="p1">
+            <img src="images/WS-kasa03-1.jpg" alt="ワークショップ3-1">
+            <img src="images/WS-kasa03-2.jpg" alt="ワークショップ3-1">
+            <img src="images/WS-kasa03-3.jpg" alt="ワークショップ3-3">
 
-      <!-- イベントカード4 -->
-      <article class="card">
-        <div class="slider" data-slider="p1">
-          <img src="images/WS-kasa04-1.jpg" alt="ワークショップ4-1">
-          <img src="images/WS-kasa04-2.jpg" alt="ワークショップ4-2">
-          <img src="images/WS-kasa04-3.jpg" alt="ワークショップ4-3">
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+          </div>
+          <h3>日傘作り</h3>
+          <p>2025年4月18日</p>
+          <p>セルフ喫茶ecotoneにて開催</p>
+        </article>
 
-          <button class="slide-btn prev" data-target="p1">←</button>
-          <button class="slide-btn next" data-target="p1">→</button>
-        </div>
-        <h3>日傘作り</h3>
-        <p>2025年5月24日</p>
-        <p>SILVERVINE つくば中根</p>
-      </article>
-      <!-- イベントカード5 -->
-      <article class="card">
-        <div class="slider" data-slider="p1">
-          <img src="images/WS-kasa05-1.jpg" alt="ワークショップ5-1">
-          <img src="images/WS-kasa05-2.jpg" alt="ワークショップ5-2">
-          <img src="images/WS-kasa05-3.jpg" alt="ワークショップ5-3">
+        <!-- イベントカード4 -->
+        <article class="card">
+          <div class="slider" data-slider="p1">
+            <img src="images/WS-kasa04-1.jpg" alt="ワークショップ4-1">
+            <img src="images/WS-kasa04-2.jpg" alt="ワークショップ4-2">
+            <img src="images/WS-kasa04-3.jpg" alt="ワークショップ4-3">
 
-          <button class="slide-btn prev" data-target="p1">←</button>
-          <button class="slide-btn next" data-target="p1">→</button>
-        </div>
-        <h3>日傘作り</h3>
-        <p>2025年6月14日</p>
-        <p>喫茶ecotoneにて開催</p>
-      </article>
-      <!-- イベントカード6 -->
-      <article class="card">
-        <div class="slider" data-slider="p1">
-          <img src="images/WS-kasa06-1.jpg" alt="ワークショップ6-1">
-          <img src="images/WS-kasa06-2.jpg" alt="ワークショップ6-2">
-          <img src="images/WS-kasa06-3.jpg" alt="ワークショップ6-3">
-          <img src="images/WS-kasa06-4.jpg" alt="ワークショップ6-4">
-          <img src="images/WS-kasa06-5.jpg" alt="ワークショップ6-5">
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+          </div>
+          <h3>日傘作り</h3>
+          <p>2025年5月24日</p>
+          <p>SILVERVINE つくば中根にて開催</p>
+        </article>
+        <!-- イベントカード5 -->
+        <article class="card">
+          <div class="slider" data-slider="p1">
+            <img src="images/WS-kasa05-1.jpg" alt="ワークショップ5-1">
+            <img src="images/WS-kasa05-2.jpg" alt="ワークショップ5-2">
+            <img src="images/WS-kasa05-3.jpg" alt="ワークショップ5-3">
 
-          <button class="slide-btn prev" data-target="p1">←</button>
-          <button class="slide-btn next" data-target="p1">→</button>
-        </div>
-        <h3>日傘作り</h3>
-        <p>2025年7月23日,26日</p>
-        <p>喫茶ランドリー 本店</p>
-      </article>
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+          </div>
+          <h3>日傘作り</h3>
+          <p>2025年6月14日</p>
+          <p>セルフ喫茶ecotoneにて開催</p>
+        </article>
+        <!-- イベントカード6 -->
+        <article class="card">
+          <div class="slider" data-slider="p1">
+            <img src="images/WS-kasa06-1.jpg" alt="ワークショップ6-1">
+            <img src="images/WS-kasa06-2.jpg" alt="ワークショップ6-2">
+            <img src="images/WS-kasa06-3.jpg" alt="ワークショップ6-3">
+            <img src="images/WS-kasa06-4.jpg" alt="ワークショップ6-4">
+            <img src="images/WS-kasa06-5.jpg" alt="ワークショップ6-5">
 
-    </div>
-  </main>
+            <button class="slide-btn prev" data-target="p1">←</button>
+            <button class="slide-btn next" data-target="p1">→</button>
+          </div>
+          <h3>日傘作り</h3>
+          <p>2025年7月23日,26日</p>
+          <p>喫茶ランドリー 本店にて開催</p>
+        </article>
+
+      </div>
+    </main>
+  </body>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -34,10 +34,10 @@ html,body{
    背景本体（body or .cozy-bg につける）
    ここで大きな “布の重なり” 配色を作っている
 --------------------------------------- */
-.cozy-bg, body {
-  min-height:100vh;
-
-  /* 背景の層を6段重ねて、ニット＋白布の雰囲気を表現している */
+.cozy-bg {
+  min-height: auto;
+  
+/* 背景の層を6段重ねて、ニット＋白布の雰囲気を表現している */
   background-image:
 
     /* (1) 白パンツの光感・ざっくりした布明るさ */
@@ -51,9 +51,7 @@ html,body{
     /* (2) パンツ中央の “折り目の線” を細い帯で描画 */
     linear-gradient(
       90deg,
-      rgba(255,255,255,0.0) 0 calc(50% - 140px),
-      rgba(255,255,255,0.9) calc(50% - 140px) calc(50% - 138px),
-      rgba(255,255,255,0.0) calc(50% - 138px) 100%
+      rgba(255,255,255,0.0) 100%
     ),
 
     /* (3) 右側の薄グレーのニット */
@@ -97,7 +95,10 @@ html,body{
   background-size: cover, cover, cover, cover, cover;
   background-position: center;
 
-  position:relative;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   /*overflow:hidden;  はみ出すパーツを隠す */
 }
 
@@ -107,7 +108,7 @@ html,body{
 --------------------------------------- */
 .cozy-bg::before{
   content:"";
-  position:absolute;
+  position:fixed;
   inset:0;
   pointer-events:none;
 
@@ -136,7 +137,7 @@ html,body{
 --------------------------------------- */
 .cozy-bg::after{
   content:"";
-  position:absolute;
+  position:fixed;
   inset:0;
   pointer-events:none;
 
@@ -163,73 +164,7 @@ html,body{
   transform: translateZ(0);
 }
 
-/* ---------------------------------------
-   画面下に置く “白パンツの布部分”
---------------------------------------- */
-.pants-fold{
-  position: absolute;
-  left: 50%;
-  bottom: 6%;
-  transform: translateX(-50%);
-  width: min(90%, 1100px);
-  height: 28%;
-  pointer-events:none;
 
-  /* 明るい白布 */
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.95),
-    rgba(250,250,250,0.95)
-  );
-
-  /* 内側の弱い影＋外側のわずかな影 */
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.06) inset,
-    0 -6px 14px rgba(0,0,0,0.03);
-
-  border-radius: 6px;
-  overflow:hidden;
-  opacity:0.95;
-}
-
-/* 白布の縦ライン（織り目） */
-.pants-fold::before{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  /* 1pxごとの縦ストライプ */
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0.02) 0 1px,
-      rgba(255,255,255,0.0) 1px 4px
-    );
-
-  mix-blend-mode: multiply;
-  opacity:0.8;
-}
-
-/* 白布の中央の “折り目の線” */
-.pants-fold::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  bottom:0;
-  width:3px;
-  transform:translateX(-50%);
-
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0.02),
-    rgba(255,255,255,0.6),
-    rgba(0,0,0,0.02)
-  );
-
-  opacity:0.6;
-  filter: blur(0.4px);
-}
 
 /* ---------------------------------------
    スマホなど幅が狭い時の調整
@@ -341,7 +276,7 @@ html,body{
 
 
 /* ---------------------------------------
-   以下はデモ用のカード表示(任意)
+   カード表示
 --------------------------------------- */
 .page-wrap{
   position:relative;
@@ -365,11 +300,11 @@ html,body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
-
+/*#fff7ec,#ffffff */
 .card{
-  background: rgba(255,255,255,0.7);
+  background: #fffdf8;
   padding:28px;
-  border-radius:12px;
+  border-radius:40px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.08);
   backdrop-filter: blur(6px) saturate(1.05);
   max-width:720px;
