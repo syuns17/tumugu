@@ -4,66 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>tumugu. HANDMADE</title>
-  <!-- 背景・カードなどのメインデザイン -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- --------------------------------------------
-       最小の追加スタイル（細かいUIの調整）
-       色・余白・レイアウトの微調整はここ
-  --------------------------------------------- -->
-  <style>
-    .logo { font-weight:700; letter-spacing:0.6px; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ボタンっぽい見た目の共通部品 */
-    .btn {
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:8px;
-      background:rgba(0,0,0,0.06);
-    }
-
-    /* 商品やイベントの並びレイアウト */
-    .grid {
-      display:grid;
-      gap:18px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    /* 全画像に共通する丸み・フィット */
-    img {
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:10px;
-      object-fit:cover;
-    }
-
-    /* 商品説明やサブテキスト */
-    .meta {
-      font-size:0.92rem;
-      color: #555;
-      margin-top:8px;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- --------------------------------------------
-       背景に置くだけのレイヤー
-       （触れない・クリックされない）
-  --------------------------------------------- -->
+  <!-- 背景レイヤー -->
   <div class="cozy-bg" aria-hidden="true"></div>
 
-  <!-- --------------------------------------------
-       ページ全体の中央寄せラッパ
-       横幅は style.css の .page-wrap で調整
-  --------------------------------------------- -->
+  <!-- ページ全体の中央寄せラッパ -->
   <header class="page-wrap" style="align-items:flex-start; padding-top:40px;">
     <div style="width:100%; max-width:1100px;">
 
+
       <!-- -------------- ナビゲーション -------------- -->
-      <nav style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <nav class="nav">
         <div style="display:flex;align-items:center;gap:12px;">
           <div class="logo">~tumugu.~</div>
           <div class="meta" style="font-size:0.9rem;">Original handmade</div>
@@ -76,25 +30,25 @@
         </div>
       </nav>
 
-      <!-- -------------- ヒーロー（トップの大きい紹介） -------------- -->
+
+      <!-- -------------- トップ -------------- -->
       <section style="margin-top:28px; display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
 
-        <!-- 左側：文章 -->
+        <!-- welmome text -->
         <div style="flex:1 1 360px;">
           <h1 style="margin:0 0 12px 0; font-size:2rem;">メインフレーズ</h1>
           <p style="margin:0 0 18px 0; color:#333;">
             お洋服や小物の制作&販売しています。
             オーダー・イベント情報・Instagramの紹介ページです。
           </p>
-
-
         </div>
 
-        <!-- 右側：画像（差し替えOK） -->
+        <!-- Icon Image -->
         <div class="hero-icon-wrap" style="flex:0 0 320px;">
-          <img  class="icon-img" src="images/aikonn.jpg" alt="tumuguのイメージアイコン（差し替え）">
+          <img  class="icon-img" src="images/IconImage.jpg" alt="tumuguのイメージアイコン">
         </div>
       </section>
+
 
       <!-- -------------- 商品セクション -------------- -->
       <main id="products" style="margin-top:36px;">
@@ -104,9 +58,8 @@
         <!-- 商品をグリッドで並べる -->
         <div class="grid" style="margin-top:18px;">
 
-          <!-- 商品1 ------------------------- -->
+          <!-- 商品1 -->
           <article class="card" aria-labelledby="p1">
-            <!-- ▼ 追加（ここがスライダー部分） -->
             <div class="slider" data-slider="p1">
               <img src="images/pull1.JPG" alt="プルオーバー3種">
               <img src="images/pull2.JPG" alt="プルオーバー3種">
@@ -114,12 +67,11 @@
               <img src="images/pull4.JPG" alt="プルオーバー ホワイト">
               <img src="images/pull5.JPG" alt="プルオーバー グレー">
               <img src="images/pull6.JPG" alt="プルオーバー ブラウン">
+            
+              <!-- ←→操作用ボタン -->
+              <button class="slide-btn prev" data-target="p1">←</button>
+              <button class="slide-btn next" data-target="p1">→</button>
             </div>
-
-            <!-- 操作用ボタン -->
-            <button class="slide-btn prev" data-target="p1">←</button>
-            <button class="slide-btn next" data-target="p1">→</button>
-            <!-- ▲ ここまで追加 -->
             <h3 id="p1" style="margin:12px 0 6px 0;">プルオーバー</h3>
             <div class="meta">ワンサイズ <br> カラー: ホワイト/グレー/ブラウン <br>¥00,000</div>
             <p style="margin-top:8px; font-size:0.95rem;">
@@ -127,7 +79,7 @@
             </p>
           </article>
 
-          <!-- 商品2 ------------------------- -->
+          <!-- 商品2 -->
           <article class="card" aria-labelledby="p2">
             <img src="images/karigazou.JPG" alt="商品2（差し替え）">
             <h3 id="p2" style="margin:12px 0 6px 0;">商品名2（差し替え）</h3>
@@ -135,7 +87,7 @@
             <p style="margin-top:8px; font-size:0.95rem;">商品説明etc.</p>
           </article>
 
-          <!-- 商品3 ------------------------- -->
+          <!-- 商品3 -->
           <article class="card" aria-labelledby="p3">
             <img src="images/karigazou.JPG" alt="商品3（差し替え）">
             <h3 id="p3" style="margin:12px 0 6px 0;">商品名3（差し替え）</h3>
@@ -145,12 +97,14 @@
         </div>
       </main>
 
+
       <!-- -------------- イベント情報 -------------- -->
       <section id="events" style="margin-top:40px;">
         <h2>Events / イベント情報</h2>
         <p class="meta">過去に行ったワークショップ・マルシェ情報。</p>
 
         <ul style="margin-top:14px; list-style:none; padding:0; display:grid; gap:12px;">
+
           <!-- イベント1 -->
           <li class="card" style="display:flex; gap:12px; align-items:center;">
             <div style="flex:0 0 84px;">
@@ -204,6 +158,7 @@
               data-instgrm-version="14">
             </blockquote>
           </div>
+
           <!-- プロフィール -->
           <a class="card insta-profile"
             href="https://www.instagram.com/tumugu_myfavorites"
@@ -217,9 +172,7 @@
               <div class="meta">instagramアカウント</div>
             </div>
           </a>
-
           
-
           <!-- メール・電話 -->
           <div class="card"><!-- insta-contact-->
             <a class="btn" href="mailto:tumugu87@gmail.com">メールで問い合わせ</a>
@@ -231,54 +184,18 @@
         <!-- Instagram公式スクリプト -->
         <script async src="//www.instagram.com/embed.js"></script>
       </section>
-
       
-
+      
       <!-- -------------- フッター -------------- -->
       <footer style="margin-top:40px; padding:18px 0; color:#444; font-size:0.9rem;">
         <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
           <div>© 2025 日本大学文理学部情報科学科 Webプログラミングの演習課題</div>
           <div class="meta">All rights reserved</div>
           <div class="meta">5423064 佐藤駿介</div>
-
         </div>
       </footer>
     </div>
   </header>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-
-    const sliders = document.querySelectorAll(".slider");
-
-    sliders.forEach(slider => {
-      const images = slider.querySelectorAll("img");
-      let index = 0;
-
-      // 最初の画像を表示
-      images[index].classList.add("active");
-
-      // スライダーID
-      const id = slider.dataset.slider;
-
-      // ボタン
-      const prev = document.querySelector(`.slide-btn.prev[data-target='${id}']`);
-      const next = document.querySelector(`.slide-btn.next[data-target='${id}']`);
-
-      prev.addEventListener("click", () => {
-        images[index].classList.remove("active");
-        index = (index - 1 + images.length) % images.length;
-        images[index].classList.add("active");
-      });
-
-      next.addEventListener("click", () => {
-        images[index].classList.remove("active");
-        index = (index + 1) % images.length;
-        images[index].classList.add("active");
-      });
-    });
-
-  });
-</script>
-
+  <script src="slider.js" defer></script>
 </body>
 </html>

@@ -1,12 +1,5 @@
-/* style.css
-   使い方:
-   1) このファイルを保存 (style.css)
-   2) HTML で <link rel="stylesheet" href="style.css"> を読み込む
-   3) body 全体を背景にするならそのまま。要素だけに使うなら .cozy-bg をページ最背面に置く
-*/
-
 /* ---------------------------------------
-   カラーパレット（画像の色味を参考にした基準色）
+   カラーパレット（変数）
 --------------------------------------- */
 :root{
   --taupe: #8b7f76;      /* 濃いグレー寄りニット */
@@ -18,21 +11,364 @@
 }
 
 /* ---------------------------------------
-   全体のリセット + 基本背景色
+   Reset / Base
 --------------------------------------- */
 *{box-sizing:border-box}
 html,body{
   height:100%;
   margin:0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-
-  /* クリーム色を全体背景として設定（ニットの1色） */
   background: var(--cream);
+}
+/* 全画像に共通する丸み・フィット */
+img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+  object-fit:cover;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ---------------------------------------
+  Layout（ページ構造）
+--------------------------------------- */
+/*ページ全体ラッパー*/
+.page-wrap{
+  position:relative;
+  z-index:2; /* 背景より前に出す */
+  
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px;
+  
+  gap:20px;
+  color:#222;
+  text-align:center;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/*ヘッダー*/
+.page-header {
+  position: sticky; 
+  top: 0;           
+  background: #fff;
+  z-index: 1000;    
+  padding: 12px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+}
+
+/*ナビゲーション*/
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* 商品・イベントの共通の並びレイアウト */
+.grid {
+  display:grid;
+  gap:18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+/* イベント専用の並びレイアウト */
+.event-grid {
+  display: grid;
+  gap: 20px; /* カード間の隙間 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+/*Instagram関連フレックス*/
+.insta-flex {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+
+/* ---------------------------------------
+   Components
+--------------------------------------- */
+/* ボタンの見た目 */
+.btn {
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:8px;
+  background:rgba(0,0,0,0.06);
+}
+/*商品やイベントのフレーム*/
+.card{
+  background: #fffdf8;
+  padding:28px;
+  border-radius:40px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px) saturate(1.05);
+  max-width:720px;
+}
+/*logo*/
+.logo { font-weight:700; letter-spacing:0.6px; }
+/* 商品説明やサブテキスト */
+.meta {
+  font-size:0.92rem;
+  color: #555;
+  margin-top:8px;
+}
+
+/* =============
+   インスタ用
+============= */
+
+/* プロフィール */
+.insta-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  max-width: 340px;
+  margin-top: 35px;
+}
+
+/* Instagram埋め込み */
+.insta-embed {
+  max-width: 300px;
+  margin-right: 24px;
+  flex: 1 1 300px;
+}
+
+.insta-embed iframe {
+  max-width: 100% !important;
+}
+
+/* 連絡ボタン */
+.insta-contact {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* =============
+   スライダー用
+============= */
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 9 / 16;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.slider img.active {
+  display: block;
+}
+
+/* ← → ボタン */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 18px;
+  z-index: 10;
+}
+
+.slide-btn.prev {
+  left: 8px;
+}
+
+.slide-btn.next {
+  right: 8px;
 }
 
 /* ---------------------------------------
-   背景本体（body or .cozy-bg につける）
-   ここで大きな “布の重なり” 配色を作っている
+   event page 
+--------------------------------------- */
+
+.page-event .event-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--cream);
+  padding: 16px 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.page-event .event-content {
+  padding-top: 160px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-event .event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* index用.cardと完全に分離 */
+.page-event .card {
+  background: #fffdf8;
+  border-radius: 130px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 0;
+  max-width: none;
+}
+
+.page-event .card h3 {
+  margin: 12px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.page-event .card p {
+  margin: 0 12px 12px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* slider（indexと分離） */
+.page-event .slider img {
+  object-fit: contain;
+}
+
+
+
+
+
+/* ---------------------------------------
+   responsive
+--------------------------------------- */
+
+/* =============
+   タブレット向け
+============= */
+@media (max-width: 800px) {
+  /* ノイズやリブを少し抑える */
+  .cozy-bg::after {
+    background-size: 200px 200px;
+    opacity: 0.7;
+  }
+  .cozy-bg::before {
+    opacity: 0.75;
+  }
+}
+
+/* =============
+   スマホ向け
+============= */
+@media (max-width: 768px) {
+  /* 背景のradialを小さくして偏りを防ぐ */
+  .cozy-bg, body {
+    background-size: 250% 250%, 250% 250%, 200% 200%, 200% 200%, 220% 220%;
+    background-position: center top;
+  }
+
+  /* リブやノイズを軽くする */
+  .cozy-bg::before {
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+  .cozy-bg::after {
+    background-size: 260px 260px;
+    opacity: 0.6;
+  }
+
+  /* ページ全体の余白を調整 */
+  .page-wrap {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  /* ヘッダー上部余白 */
+  header.page-wrap {
+    padding-top: 20px !important;
+  }
+
+  /* カード幅・フォント調整 */
+  .card {
+    max-width: 90%;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  /* イベントページのコンテンツ余白 */
+  .page-event .event-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* ヒーロー画像 */
+  .icon-img {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .hero-icon-wrap {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* ナビを縦並びに */
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  nav > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Instagramフレックスを縦並びに */
+  .insta-flex {
+    flex-direction: column;
+  }
+
+  .insta-embed,
+  .insta-profile {
+    max-width: 100%;
+  }
+}
+
+/* =============
+   小型スマホ向け
+============= */
+@media (max-width: 430px) {
+  .header-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .header-btns .btn {
+    flex: 1 1 auto;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+}
+
+/* ---------------------------------------
+   背景本体
 --------------------------------------- */
 .cozy-bg {
   min-height: auto;
@@ -102,10 +438,7 @@ html,body{
   /*overflow:hidden;  はみ出すパーツを隠す */
 }
 
-/* ---------------------------------------
-   ニット特有の「リブ（畝）」表現
-   横方向の細い筋を重ねてる
---------------------------------------- */
+/* ニット特有の「リブ（畝）」表現  横方向の細い筋を重ねてる */
 .cozy-bg::before{
   content:"";
   position:fixed;
@@ -131,10 +464,7 @@ html,body{
   filter: blur(0.2px) contrast(1.02);
 }
 
-/* ---------------------------------------
-   毛羽立ち（ニットの細かい粒）を
-   SVG ノイズで表現するレイヤー
---------------------------------------- */
+/* 毛羽立ち（ニットの細かい粒）を SVG ノイズで表現するレイヤー */
 .cozy-bg::after{
   content:"";
   position:fixed;
@@ -162,256 +492,4 @@ html,body{
   mix-blend-mode: overlay;
   opacity:0.9;
   transform: translateZ(0);
-}
-
-
-
-/* ---------------------------------------
-   スマホなど幅が狭い時の調整
---------------------------------------- */
-@media (max-width:800px){
-  /* ノイズやリブの量を少し抑える */
-  .cozy-bg::after{
-    background-size: 200px 200px;
-    opacity:0.7;
-  }
-  .cozy-bg::before{
-    opacity:0.75;
-  }
-
-  /* 白パンツ部分の高さ調整 */
-  .pants-fold{
-    height:30%;
-    bottom:4%;
-  }
-}
-
-/* ---------------------------------------
-   スマホ（幅600px以下）での最適化
---------------------------------------- */
-@media (max-width: 600px) {
-
-  /* 背景の radial を小さめにして
-     スマホでの偏り・はみ出しを防ぐ */
-  .cozy-bg, body {
-    background-size: 250% 250%, 250% 250%, 200% 200%, 200% 200%, 220% 220%;
-    background-position: center top;
-  }
-
-  /* リブやノイズを軽くする（読み込み高速化） */
-  .cozy-bg::before {
-    opacity: 0.6;
-    transform: scaleY(1);
-  }
-  .cozy-bg::after {
-    background-size: 260px 260px;
-    opacity: 0.6;
-  }
-
-  /* 白パンツ部分をコンパクトに */
-  .pants-fold {
-    height: 22%;
-    bottom: 3%;
-    width: 95%;
-    border-radius: 4px;
-  }
-
-  /* page 内の余白を減らしてスマホ向けに */
-  .page-wrap {
-    padding: 20px;
-    flex-direction: column;
-  }
-
-  /* カードの横幅調整 */
-  .card {
-    max-width: 90%;
-    padding: 20px;
-    font-size: 14px;
-  }
-  .icon-img {
-    width: 160px !important;
-    height: 160px !important;
-  }
-  .hero-icon-wrap {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-}
-/* スマホではナビを縦並びにして折り返す */
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  nav > div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  /* 上部の余白も少し減らすと見切れ防止になる */
-  header.page-wrap {
-    padding-top: 20px !important;
-  }
-}
-@media (max-width:430px) {
-  /* ヘッダー右側のボタンラッパ */
-  .header-btns {
-    display: flex;
-    gap: 6px;         /* ボタン間の隙間 */
-    flex-wrap: nowrap; /* 折り返さない */
-    overflow-x: auto;  /* 幅不足なら横スクロール */
-  }
-
-  .header-btns .btn {
-    flex: 1 1 auto;    /* 横幅を縮小可能に */
-    font-size: 0.8rem; /* フォントも少し小さく */
-    padding: 6px 10px; /* ボタンサイズを調整 */
-    white-space: nowrap; /* テキストを改行させない */
-  }
-}
-
-
-/* ---------------------------------------
-   カード表示
---------------------------------------- */
-.page-wrap{
-  position:relative;
-  z-index:2; /* 背景より前に出す */
-  
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:48px;
-  
-  /* ---------------------------------------
-  width:100%;
-  max-width:1200px;
-  margin:0 auto;
-  padding:48px 20px;
-  --------------------------------------- */
-  gap:20px;
-  color:#222;
-  text-align:center;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-/*#fff7ec,#ffffff */
-.card{
-  background: #fffdf8;
-  padding:28px;
-  border-radius:40px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  backdrop-filter: blur(6px) saturate(1.05);
-  max-width:720px;
-}
-
-/* ============================================
-   商品画像スライダー用スタイル（追加）
-============================================ */
-.slider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-  aspect-ratio: 9 / 16;
-}
-
-.slider img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-}
-
-.slider img.active {
-  display: block;
-}
-
-/* ← → ボタン */
-.slide-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 6px 10px;
-  background: rgba(255,255,255,0.7);
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 18px;
-  z-index: 10;
-}
-
-.slide-btn.prev {
-  left: 8px;
-}
-
-.slide-btn.next {
-  right: 8px;
-}
-
-.insta-flex {
-  display: flex;
-  gap: 60px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-/* プロフィール */
-.insta-profile {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  max-width: 340px;
-  margin-top: 35px;
-}
-
-/* Instagram埋め込み */
-.insta-embed {
-  max-width: 300px;
-  margin-right: 24px;
-  flex: 1 1 300px;
-}
-
-.insta-embed iframe {
-  max-width: 100% !important;
-}
-
-/* 連絡ボタン */
-.insta-contact {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-/* スマホ時 */
-@media (max-width: 768px) {
-  .insta-flex {
-    flex-direction: column;
-  }
-
-  .insta-embed,
-  .insta-profile {
-    max-width: 100%;
-  }
-}
-
-.event-grid {
-  display: grid;
-  gap: 20px; /* カード間の隙間 */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.page-header {
-  position: sticky; /* または fixed */
-  top: 0;           /* 上端に固定 */
-  background: #fff; /* 背景をつけて下の要素を隠さない */
-  z-index: 1000;    /* 他の要素より前に表示 */
-  padding: 12px 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 影で浮いて見える */
 }
