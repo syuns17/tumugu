@@ -3,142 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>マルシェ</title>
-  <style>
-    /* ---------------------------------
-       基本リセット
-    --------------------------------- */
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      line-height: 1.5;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    .meta {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 4px;
-    }
-
-    /* ---------------------------------
-       固定ヘッダー
-    --------------------------------- */
-    .event-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      padding: 16px 24px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-
-    /* ---------------------------------
-       メインコンテンツ
-    --------------------------------- */
-    .event-content {
-      padding-top: 160px; /* headerの高さ分 */
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .event-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
-
-    .card h3 {
-      margin: 12px;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      margin: 0 12px 12px 12px;
-      font-size: 0.95rem;
-    }
-
-    /* ---------------------------------
-       レスポンシブ調整
-    --------------------------------- */
-    @media (max-width: 768px) {
-      .event-header {
-        padding: 12px 16px;
-      }
-
-      .event-content {
-        padding-top: 160px;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-    }
-  </style>
 </head>
-<body>
-
+<body class="page-event page-marche">
   <!-- 固定ヘッダー -->
   <header class="event-header">
     <h1>マルシェ</h1>
     <p class="meta">これまでに開催したマルシェの記録です。</p>
     <a class="btn" href="index.html#events">← トップに戻る</a>
   </header>
-
+  <div class="cozy-bg" aria-hidden="true"></div>
   <!-- メインコンテンツ -->
   <main class="event-content">
     <div class="event-grid">
       
       <!-- イベントカード1 -->
       <article class="card">
-        <img src="images/marusye-01.png" alt="マルシェ1">
-        <h3>マルシェ1</h3>
-        <p>〇月〇日、〇〇会場で開催。テーマは「手作り雑貨」。</p>
-      </article>
+          <div class="slider">
+            <img src="images/MC-01-1.jpg" alt="マルシェ1-1">
+            <img src="images/MC-01-2.jpg" alt="マルシェ1-2">
+            <img src="images/MC-01-3.jpg" alt="マルシェ1-3">
+            <img src="images/MC-01-4.jpg" alt="マルシェ1-4">
+            <img src="images/MC-01-5.jpg" alt="マルシェ1-5">
+            
+            <button class="slide-btn prev">←</button>
+            <button class="slide-btn next">→</button>
+          </div>
+          <h3>ニワエコマルシェ</h3>
+          <p>2024年10月5日</p>
+          <p>お洋服やショルダーバッグ</p>
+          <p>などを出品</p>
+        </article>
 
       <!-- イベントカード2 -->
       <article class="card">
-        <img src="images/marusye-01.png" alt="マルシェ2">
-        <h3>マルシェ2</h3>
-        <p>〇月〇日、△△会場で開催。テーマは「布小物作り」。</p>
-      </article>
+          <div class="slider">
+            <img src="images/MC-02-1.jpg" alt="マルシェ2-1">
+            <img src="images/MC-02-2.jpg" alt="マルシェ2-2">
+            <img src="images/MC-02-3.jpg" alt="マルシェ2-3">
+            <img src="images/MC-02-4.jpg" alt="マルシェ2-4">
+            <img src="images/MC-02-5.jpg" alt="マルシェ2-5">
+            
+            <button class="slide-btn prev">←</button>
+            <button class="slide-btn next">→</button>
+          </div>
+          <h3>ニワエコマルシェ</h3>
+          <p>2025年3月20日</p>
+          <p>トートバッグや日傘などを出品</p>
+        </article>
 
       <!-- イベントカード3 -->
       <article class="card">
-        <img src="images/marusye-01.png" alt="マルシェ3">
-        <h3>マルシェ3</h3>
-        <p>〇月〇日、□□会場で開催。テーマは「刺繍入門」。</p>
-      </article>
+          <div class="slider">
+            <img src="images/MC-03-1.jpg" alt="マルシェ3-1">
+            <img src="images/MC-03-2.jpg" alt="マルシェ3-2">
+            <img src="images/MC-03-3.jpg" alt="マルシェ3-3">
+            <img src="images/MC-03-4.jpg" alt="マルシェ3-4">
+            <img src="images/MC-03-5.jpg" alt="マルシェ3-5">
+            
+            <button class="slide-btn prev">←</button>
+            <button class="slide-btn next">→</button>
+          </div>
+          <h3>ニワエコマルシェ</h3>
+          <p>2025年11月30日</p>
+          <p>小豆カイロ、ニットや冬服を出品</p>
+        </article>
 
       <!-- イベントカード4 -->
-      <article class="card">
-        <img src="images/marusye-01.png" alt="マルシェ4">
-        <h3>マルシェ4</h3>
-        <p>〇月〇日、◇◇会場で開催。テーマは「アクセサリー作り」。</p>
-      </article>
-
     </div>
   </main>
-
+  <script src="slider.js"></script>
 </body>
 </html>
