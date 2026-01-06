@@ -236,6 +236,11 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
+.page-event .card h4 {
+  margin: 12px;
+  text-align: center;
+}
+
 .page-event .card p {
   margin: 0 12px 12px;
   font-size: 0.95rem;
